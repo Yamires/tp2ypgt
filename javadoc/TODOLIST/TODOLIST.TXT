@@ -5,10 +5,30 @@ CE FICHIER CONTIENT UNE DESCRIPTION DES CHOSES À FAIRE ET LA DISTRIBUTION DES T
         **LES CLASSES DÉJÀ IMPLENTÉES.**
 
 2- IMPLÉMENTER LES FONCTIONS;
+        ** implmenter avec try et catch et trown
         HandleLoadCourses();
-
+            1- lire fichier en txt avec information des cours
+            2- trasnformer dans un list d'objects 'courses'
+            3- méthode pour filtrer les cours selon la session dans la args
+            4- retourne avec objet 'objecttOutputStream' liste de cours pour la session spécifiée
+            2 exceptions
+                erreur dans la lecture
+                erreur dans l'écriture de l'object dans le flux
         HandleRegistration();
+            1- recuper l'objet 'registrationForm' sous 'objetInputStream',
+            2- enregistrer dans le ficiher inscription
+            2 exceptions:
+                erreur dans la lecture
+                erreur dans l'écriture de l'object dans le flux
 
-3- IMPLEMENTER CLIENT DE LIGNE DE COMMANDE:
-        f1;
-        f2;
+3- build le .jar pour server.jar
+
+4- IMPLEMENTER CLIENT DE LIGNE DE COMMANDE:
+        f1; recuperer la liste des cours dans le fichier cours.txt
+        f2; inscription dans le fichier inscription.txt
+
+        implementer le .jar client_simple.jar
+
+5- lister les exceptions déjà implementées et définir les exceptions à implementer.
+
+6- implementation de l'interface graphique
