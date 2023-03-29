@@ -33,4 +33,5 @@ CE FICHIER CONTIENT UNE DESCRIPTION DES CHOSES À FAIRE ET LA DISTRIBUTION DES T
 
 6- implementation de l'interface graphique
 
-#ajout gabriel
+### déterminer type de path à faire -- windows/mac ###
+
