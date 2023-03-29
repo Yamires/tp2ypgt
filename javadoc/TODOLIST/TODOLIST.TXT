@@ -32,3 +32,5 @@ CE FICHIER CONTIENT UNE DESCRIPTION DES CHOSES À FAIRE ET LA DISTRIBUTION DES T
 5- lister les exceptions déjà implementées et définir les exceptions à implementer.
 
 6- implementation de l'interface graphique
+
+#ajout gabriel
