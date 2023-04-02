@@ -42,7 +42,7 @@ public class Client {
     }
 
     /**
-     * Se déconnecte du serveur et ferme les flux et la socket.
+     * Se déconnecte du serveur et ferme les flux et le socket.
      * @throws IOException Si une erreur de déconnexion se produit
      */
     public void disconnect() throws IOException {
