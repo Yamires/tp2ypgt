@@ -183,7 +183,7 @@ public class Client {
                 RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, selectedCourse);
                 client.connect();
                 String response = client.register(form);
-                System.out.println("Félicitation ! Inscription réussie de " + prenom + "au cours " + selectedCourse.getCode());
+                System.out.println("Félicitation ! Inscription réussie de " + prenom + " au cours " + selectedCourse.getCode());
             } else {
                 System.out.println("Le code du cours est invalide.");
             }
