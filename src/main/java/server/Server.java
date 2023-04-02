@@ -185,10 +185,12 @@ public class Server {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
 
             // Écrire les informations de l'inscription dans le fichier
-            String registrationInfo = registrationForm.getPrenom() + "\t" + registrationForm.getNom() + "\t" +
-                    registrationForm.getEmail() + "\t" + registrationForm.getMatricule() + "\t" +
-                    registrationForm.getCourse().getCode() + "\t" + registrationForm.getCourse().getName() + "\t" +
-                    registrationForm.getCourse().getSession() + "\n";
+            String registrationInfo = registrationForm.getCourse().getSession() + "\t" +
+                    registrationForm.getCourse().getCode() + "\t" +
+                    registrationForm.getMatricule() + "\t" +
+                    registrationForm.getPrenom() + "\t" +
+                    registrationForm.getNom() + "\t" +
+                    registrationForm.getEmail() + "\n";
 
             writer.write(registrationInfo);
 
