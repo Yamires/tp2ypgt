@@ -1,6 +1,2 @@
 Automne	IFT2255	12345678	Michalis	Famelis	mfamelis@iro.umontreal.ca
-g		g	g	IFT2125	Algorithmique	Hiver
-	g	trabelsiga	s	IFT2125	Algorithmique	Hiver
-	g	g	g	IFT1015	Programmation1	Automne
-	g	g	g	IFT1015	Programmation1	Automne
 Automne	IFT1227	12345678	Gabriel	Trabelsi	trabelsigabriel6@gmail.com
