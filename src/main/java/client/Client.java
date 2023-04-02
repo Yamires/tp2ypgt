@@ -135,8 +135,8 @@ public class Client {
      */
     public ArrayList<Course> menu(Scanner scanner) throws IOException, ClassNotFoundException {
         ArrayList<Course> courses = null;
-        System.out.print("Veuillez choisir la session pour laquelle consulter la liste des cours: \n1. Automne \n2. Hiver \n3. Eté \n> Choix: ");
-        String[] course= {"Automne", "Hiver", "Ete"};
+        System.out.print("Veuillez choisir la session pour laquelle consulter la liste des cours: \n1. Automne \n2. Hiver \n3. Été \n> Choix: ");
+        String[] course= {"Automne", "Hiver", "Été"};
         courses = displayCoursesForSession(course, scanner);
         int choice;
         // On boucle tant que l'utilisateur ne souhaite pas ajouter de cours
