@@ -8,7 +8,7 @@ public class Course implements Serializable {
     private String code;
     private String session;
 
-    public Course(String name, String code, String session) {
+    public Course(String prenom, String name, String code) {
         this.name = name;
         this.code = code;
         this.session = session;

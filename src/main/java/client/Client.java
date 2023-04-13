@@ -1,8 +1,8 @@
-
 package client;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,14 +35,14 @@ public class Client {
      * Se connecte au serveur en utilisant le nom d'hôte et le port spécifiés dans le constructeur.
      * @throws IOException Si une erreur de connexion se produit
      */
-    public void connect() throws IOException {
+    public void connect() throws IOException, ConnectException {
         socket = new Socket(hostname, port);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
     }
 
     /**
-     * Se déconnecte du serveur et ferme les flux et le socket.
+     * Se déconnecte du serveur et ferme les flux et la socket.
      * @throws IOException Si une erreur de déconnexion se produit
      */
     public void disconnect() throws IOException {
@@ -135,8 +135,8 @@ public class Client {
      */
     public ArrayList<Course> menu(Scanner scanner) throws IOException, ClassNotFoundException {
         ArrayList<Course> courses = null;
-        System.out.print("Veuillez choisir la session pour laquelle consulter la liste des cours: \n1. Automne \n2. Hiver \n3. Été \n> Choix: ");
-        String[] course= {"Automne", "Hiver", "Été"};
+        System.out.print("Veuillez choisir la session pour laquelle consulter la liste des cours: \n1. Automne \n2. Hiver \n3. Eté \n> Choix: ");
+        String[] course= {"Automne", "Hiver", "Ete"};
         courses = displayCoursesForSession(course, scanner);
         int choice;
         // On boucle tant que l'utilisateur ne souhaite pas ajouter de cours
@@ -194,4 +194,3 @@ public class Client {
         }
     }
 }
-

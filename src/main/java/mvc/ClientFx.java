@@ -2,9 +2,9 @@ package mvc;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import server.models.Course;
 import server.models.RegistrationForm;
-
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -12,80 +12,61 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * La classe Client permet de créer un utlisateur qui se connecte à un serveur pour charger les cours et s'inscrire.
+ */
 public class ClientFx {
     private final String hostname;
     private final int port;
     private Socket socket;
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
-
+    /**
+     * Constructeur de la classe Client.
+     * @param hostname Le nom d'hôte du serveur
+     * @param port Le numéro de port sur lequel le serveur écoute
+     */
     public ClientFx(String hostname, int port){
         this.hostname = hostname;
         this.port = port;
     }
-
+    /**
+     * Se connecte au serveur en utilisant le nom d'hôte et le port spécifiés dans le constructeur.
+     * @throws IOException Si une erreur de connexion se produit
+     */
     public void connect() throws IOException {
         socket = new Socket(hostname,port);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
     }
+
+    /**
+     * Se déconnecte du serveur et ferme les flux et la socket.
+     * @throws IOException Si une erreur de déconnexion se produit
+     */
     public void disconnect() throws IOException{
         objectInputStream.close();
         objectOutputStream.close();
         socket.close();
     }
 
-    // CHARGE LES COURS POUR LA SESSION SELECTIONNÉE
+    /**
+     * Charge les cours pour la session spécifiée.
+     * @param session La session pour laquelle charger les cours
+     * @return Une liste des cours disponibles pour la session
+     * @throws IOException Si une erreur de communication avec le serveur se produit
+     * @throws ClassNotFoundException Si la classe des objets reçus n'est pas trouvée
+     */
     public ArrayList<Course> loadCourse(String session) throws IOException, ClassNotFoundException {
-        objectOutputStream.writeObject("Charger" + session);
-        String result = (String) objectOutputStream.readObject();
+        objectOutputStream.writeObject("CHARGER" + session);
+        objectOutputStream.flush();
+        String result = (String) objectInputStream.readObject();
         if ("SUCCESS".equals(result)){
             return (ArrayList<Course>) objectInputStream.readObject();}
         else {
-            throw new IOException(("Erreur lors du chargemeent des cours"));
+            throw new IOException(("Erreur lors du chargement des cours"));
         }
     }
-    // affichage des cours dispaonibles --> transformer en interface graphique
-    public ArrayList<Course> displayCoursesForSession (String [] cours, Scanner scanner) throws IOException, ClassNotFoundException {
-        int session = scanner.nextInt();
-        ArrayList<Course> courses = loadCourse(cours[session - 1]);
-        int i = 1;
-        System.out.println("Cours disponibles pendant la session d'"+ cours[session - 1] + ":");
-        for (Course course : courses) {
-            System.out.println(i + "." + course.getCode() + "-" + course.getName());
-            i++;
-        }
-        scanner.nextLine();
-        return courses;
-    }
-
-    // choisir session et afficher session
-
-    public ArrayList<Course> menu(Scanner scanner) throws IOException, ClassNotFoundException{
-        ArrayList<Course> courses = null;
-        System.out.print("veuillez choisir la session pour laquelle consulter la liste des cours: \n1. Automne \n2. Hiver \n Été \n> choix:");
-        String[] course = {"Automne", "Hiver", "Été"};
-        courses = displayCoursesForSession(course, scanner);
-
-        int choice;
-
-        while (true) {
-            System.out.println("Choix \n1. choisir une session \n2. ajouter un cours \n> Choix: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-
-            if (choice == 1){
-                System.out.println(("Veuilles choisir la session pour laquelle consuter la liste des cours: \n1. Automne \n2. Hiver \n3. Eté \n> Choix: "));
-                connect();
-                courses = displayCoursesForSession(course, scanner);}
-            else if (choice == 2){
-                break;}
-            else { System.out.println("choix invalide, veuillez réessayer");
-            }
-        }
-        return courses;
-    }
-
 
     // inscription
     public String register(RegistrationForm form) throws IOException, ClassNotFoundException{
@@ -93,7 +74,7 @@ public class ClientFx {
         objectOutputStream.flush();
         objectOutputStream.writeObject(form);
         objectOutputStream.flush();
-        return (String) objectOutputStream.readObject();
+        return (String) objectInputStream.readObject();
     }
     // chercher cours avec code du cours
     public Course searchCourse(ArrayList<Course> courses, Scanner scanner){
@@ -110,6 +91,7 @@ public class ClientFx {
         return selectedCourse;
     }
     public static void main(String[] args) throws IOException, ClassNotFoundException{
+
         ClientFx modele = new ClientFx("localhost", 1337);
 
         modele.connect();
@@ -127,6 +109,7 @@ public class ClientFx {
         modele.disconnect();
 
     }
+
 
 }
 

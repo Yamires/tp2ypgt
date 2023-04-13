@@ -61,18 +61,17 @@ public class Server {
     public void run() {
         while (true) {
             try {
-                    client = server.accept();
-                    System.out.println("Connecté au client: " + client);
-                    objectInputStream = new ObjectInputStream(client.getInputStream());
-                    objectOutputStream = new ObjectOutputStream(client.getOutputStream());
-                    listen();
-                    disconnect();
-                    System.out.println("Client déconnecté!");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                client = server.accept();
+                System.out.println("Connecté au client: " + client);
+                objectInputStream = new ObjectInputStream(client.getInputStream());
+                objectOutputStream = new ObjectOutputStream(client.getOutputStream());
+                listen();
+                disconnect();
+                System.out.println("Client déconnecté!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     /**
@@ -118,7 +117,7 @@ public class Server {
      * @param cmd La commande reçue du client.
      * @param arg L'argument de la commande.
      */
-    public void handleEvents(String cmd, String arg) {
+    public void handleEvents(String cmd, String arg) {;
         if (cmd.equals(REGISTER_COMMAND)) {
             System.out.println("Commande register reçue");
             handleRegistration();
@@ -131,10 +130,11 @@ public class Server {
     }
 
     /**
-     Lire un fichier texte contenant des informations sur les cours et les transformer en liste d'objets 'Course'.
+     Lire un fichier texte contenant des informations sur les cours et les transofmer en liste d'objets 'Course'.
      La méthode filtre les cours par la session spécifiée en argument.
      Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
      @param arg la session pour laquelle on veut récupérer la liste des cours
+     @throws Exception si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux
      */
     public void handleLoadCourses(String arg) {
         String filePath = "src/main/java/server/data/cours.txt";
@@ -170,6 +170,7 @@ public class Server {
     /**
      Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
      et renvoyer un message de confirmation au client.
+     @throws Exception si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {
         // Chemin du fichier registrations.txt
@@ -210,4 +211,3 @@ public class Server {
     }
 
 }
-

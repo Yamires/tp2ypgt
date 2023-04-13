@@ -3,35 +3,39 @@ package mvc;
 
 
 
+
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import server.EventHandler;
+
+
 import server.models.Course;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.awt.event.ActionEvent;
 
-
+/**
+ * La classe Vue gère les éléments visuels du Client et les actions sur l'interface graphique.
+ */
 public class Vue extends VBox {
+
+
+   
 
     //  MENU 1 TABLEVIEW
     private Text titre = new Text("Liste des cours");
     TableView<Course> tableView = new TableView<>();
 
     //première colonne
-    TableColumn<Course, String> codeColumn = new TableColumn<>(("Code"));
-    codeColumn.setCellValueFactory(new PropertyValueFactory<>("Code"));
+    TableColumn<Course, String> codeColumn = new TableColumn<>("Code");
 
     //deuxième colonne
     TableColumn<Course, String> courseColumn = new TableColumn<>(("Cours"));
-    courseColumn.setCellValueFactory(new PropertyValueFactory<>("Cours");
-
 
     // MENU 2 SELECTIONNEUR DE SESSION
 
@@ -49,7 +53,7 @@ public class Vue extends VBox {
     private TextField email = new TextField();
     private Text soustitre4 = new Text("Matricule");
     private TextField matricule = new TextField();
-    private Button envoyer = new Button("envoyer");
+    Button envoyer = new Button("envoyer");
 
 
     // handles position des élements
@@ -144,33 +148,35 @@ public class Vue extends VBox {
 
         // formulaire inscription // menu 3
         public TextField getPrenom() {return prenom;}
-        public TextField setPrenom() {return this.prenom;}
+
         public TextField getNom() {return nom;}
-        public TextField setNom() {return this.nom;}
+
         public TextField getEmail() {return email;}
-        public TextField setEmail() {return this.email;}
+
         public TextField getMatricule() {return matricule;}
-        public TextField setMatricule() {return this.matricule;}
+
 
 
     // récuperer le cours choisi
     public Course getSelectedCourse(){
-            ObservableList selectedIndices = tableView.getSelectionModel().getSelectedIndices();
+            ObservableList<Integer> selectedIndices = tableView.getSelectionModel().getSelectedIndices();
         return null;
     };
-    public void setInscriptionButtonHandler(EventHandler handler) {
-        envoyer.setOnAction(handler);
-    }
+
 
     //TODO
     // message de reussite
     public void displayMessage(String response) {}
+
+    public void displayError() {
+    }
     //TODO
     // message d'erreur
 
 
+    //public void displayError() {
+    }
 
-}
 
 
 
