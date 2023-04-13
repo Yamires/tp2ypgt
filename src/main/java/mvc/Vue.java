@@ -25,8 +25,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Vue extends VBox {
 
 
-   
-
     //  MENU 1 TABLEVIEW
     private Text titre = new Text("Liste des cours");
     TableView<Course> tableView = new TableView<>();

@@ -1,5 +1,6 @@
 package mvc;
 
+import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -15,7 +16,13 @@ import java.util.Scanner;
 /**
  * La classe Client permet de créer un utlisateur qui se connecte à un serveur pour charger les cours et s'inscrire.
  */
-public class ClientFx {
+public class ClientFx extends Application{
+    public static void main(String[] args) {
+        Application.launch(ClientFx.class, args);
+    }
+
+
+
     private final String hostname;
     private final int port;
     private Socket socket;
@@ -90,9 +97,9 @@ public class ClientFx {
         }
         return selectedCourse;
     }
-    public static void main(String[] args) throws IOException, ClassNotFoundException{
-
-        ClientFx modele = new ClientFx("localhost", 1337);
+    @Override
+    public void start(Stage stage) throws IOException, ClassNotFoundException {
+        mvc.ClientFx modele = new mvc.ClientFx("localhost", 1337);
 
         modele.connect();
 
@@ -101,14 +108,17 @@ public class ClientFx {
 
         Scene scene = new Scene(vue, 400, 500);
 
-        Stage stage = null;
         stage.setScene(scene);
-        stage.setTitle("Inscription UDEM");
+        stage.setTitle("INSCRIPTION UDEM");
         stage.show();
 
         modele.disconnect();
 
-    }
+
+
+
+        }
+
 
 
 }
