@@ -1,2 +1,9 @@
 Automne	IFT2255	12345678	Michalis	Famelis	mfamelis@iro.umontreal.ca
 Automne	IFT1227	12345678	Gabriel	Trabelsi	trabelsigabriel6@gmail.com
+
+Automne	IFT1015	123456	yamir	poldo	alej.poldo@gmail.com
+Automne	IFT1015	123456	Yamir	Poldo	alej.poldo@gmail.com
+Hiver	IFT1025	123456	yamir	poldo	alej@gmail.com
+Hiver	IFT1025	123456	yamir	poldo	alej@gmail.com
+Hiver	IFT1025	123456	Yamir	Poldo	alej.poldo@gmail.com
+Hiver	IFT1025	123456	Yamir	Poldo	alej.poldo@gmail.com

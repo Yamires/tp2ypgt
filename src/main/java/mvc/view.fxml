@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.Controller">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="600.0">
+         <children>
+            <AnchorPane layoutY="6.0" prefHeight="239.0" prefWidth="318.0">
+               <children>
+                  <TableView fx:id="tableView" layoutX="22.0" layoutY="36.0" prefHeight="284.0" prefWidth="288.0">
+                    <columns>
+                      <TableColumn fx:id="codeColumn" prefWidth="103.0" text="Code" />
+                      <TableColumn fx:id="nameColumn" minWidth="0.0" prefWidth="184.0" text="Cours" />
+                    </columns>
+                  </TableView>
+                  <Text layoutX="92.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des cours " wrappingWidth="147.3869171142578">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Button fx:id="charger" layoutX="247.0" layoutY="354.0" mnemonicParsing="false" onAction="#onButtonClickedCharger" text="Charger" />
+            <ComboBox fx:id="comboBox" layoutX="26.0" layoutY="354.0" prefWidth="150.0" promptText="Choisir session" />
+            <Separator layoutX="315.0" layoutY="1.0" orientation="VERTICAL" prefHeight="429.0" prefWidth="6.0" />
+            <Separator layoutX="8.0" layoutY="338.0" prefHeight="2.0" prefWidth="307.0" />
+            <TextField fx:id="textField1" layoutX="408.0" layoutY="54.0" />
+            <TextField fx:id="textField2" layoutX="408.0" layoutY="94.0" />
+            <TextField fx:id="textField3" layoutX="408.0" layoutY="134.0" />
+            <TextField fx:id="textField4" layoutX="408.0" layoutY="175.0" />
+            <Button fx:id="envoyer" layoutX="507.0" layoutY="214.0" mnemonicParsing="false" onAction="#onButtonClickedEnvoyer" text="Envoyer" />
+            <Text layoutX="378.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Formulaire d'inscription" wrappingWidth="181.67117309570312">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="347.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
+            <Text layoutX="346.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="347.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" />
+            <Text layoutX="345.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricule :" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

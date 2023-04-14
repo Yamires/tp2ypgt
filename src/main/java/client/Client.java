@@ -1,8 +1,8 @@
+
 package client;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.ConnectException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -35,7 +35,7 @@ public class Client {
      * Se connecte au serveur en utilisant le nom d'hôte et le port spécifiés dans le constructeur.
      * @throws IOException Si une erreur de connexion se produit
      */
-    public void connect() throws IOException, ConnectException {
+    public void connect() throws IOException {
         socket = new Socket(hostname, port);
         objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         objectInputStream = new ObjectInputStream(socket.getInputStream());
@@ -59,9 +59,12 @@ public class Client {
      * @throws ClassNotFoundException Si la classe des objets reçus n'est pas trouvée
      */
     public ArrayList<Course> loadCourses(String session) throws IOException, ClassNotFoundException {
+
         objectOutputStream.writeObject("CHARGER " + session);
         objectOutputStream.flush();
+
         String result = (String) objectInputStream.readObject();
+
         if ("SUCCESS".equals(result)) {
             return (ArrayList<Course>) objectInputStream.readObject(); // On reçoit puis traite la liste de cours
         } else {
@@ -94,7 +97,10 @@ public class Client {
      */
     public ArrayList<Course> displayCoursesForSession( String[] cours, Scanner scanner) throws IOException, ClassNotFoundException {
         int session = scanner.nextInt();
+        System.out.println(session);
+        System.out.println(cours[session - 1]);
         ArrayList<Course> courses = loadCourses(cours[session-1]);
+        System.out.println(courses);
         int i = 1;
 
         System.out.println("Cours disponibles pendant la session d'" + cours[session-1] + " :");
@@ -183,7 +189,7 @@ public class Client {
                 RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, selectedCourse);
                 client.connect();
                 String response = client.register(form);
-                System.out.println("Félicitation ! Inscription réussie de " + prenom + " au cours " + selectedCourse.getCode());
+                System.out.println("Félicitation ! Inscription réussie de " + prenom + "au cours " + selectedCourse.getCode());
             } else {
                 System.out.println("Le code du cours est invalide.");
             }
