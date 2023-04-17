@@ -97,8 +97,6 @@ public class Client {
      */
     public ArrayList<Course> displayCoursesForSession( String[] cours, Scanner scanner) throws IOException, ClassNotFoundException {
         int session = scanner.nextInt();
-        System.out.println(session);
-        System.out.println(cours[session - 1]);
         ArrayList<Course> courses = loadCourses(cours[session-1]);
         System.out.println(courses);
         int i = 1;
@@ -163,6 +161,12 @@ public class Client {
         }
         return courses;
     }
+    /**
+     * La méthode principale qui démarre l'application d'inscription de cours de l'UDEM.
+     * @param args les arguments de ligne de commande (non utilisés dans cette application)
+     * @throws IOException si une erreur se produit lors de la communication avec le serveur
+     * @throws ClassNotFoundException si la classe d'un objet reçu du serveur n'a pas été trouvée
+     */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Client client = new Client("localhost", 1337);
         try {

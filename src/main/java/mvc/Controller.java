@@ -18,8 +18,6 @@ import java.util.ResourceBundle;
  * La classe Controller gère les entrées de l'utilisateur et met à jour le modele et la vue.
  */
 public class Controller implements Initializable {
-
-
     @FXML
     private TableView tableView;
     @FXML
@@ -43,7 +41,13 @@ public class Controller implements Initializable {
     @FXML
     private Label messageBox;
 
-
+    /**
+     * Cette méthode est appelée lorsque l'utilisateur clique sur le bouton "charger".
+     * Elle charge les cours correspondant à la session sélectionnée dans la boîte de sélection et les affiche dans le tableau.
+     * @param event L'événement généré par le clic sur le bouton.
+     * @throws IOException S'il y a une erreur lors de la communication avec le serveur.
+     * @throws ClassNotFoundException Si la classe Course n'est pas trouvée.
+     */
     @FXML
     public void onButtonClickedCharger(ActionEvent event) throws IOException, ClassNotFoundException {
         try {
@@ -66,7 +70,13 @@ public class Controller implements Initializable {
         }
     }
 
-
+    /**
+     * Cette méthode est appelée lorsque l'utilisateur clique sur le bouton "envoyer".
+     * Elle crée un formulaire d'inscription avec les données saisies par l'utilisateur et l'envoie au serveur pour traitement.
+     * @param event L'événement généré par le clic sur le bouton.
+     * @throws IOException S'il y a une erreur lors de la communication avec le serveur.
+     * @throws ClassNotFoundException Si la classe Course n'est pas trouvée.
+     */
     @FXML
     public void onButtonClickedEnvoyer(ActionEvent event) throws IOException, ClassNotFoundException {
         Modele modele = new Modele("localhost", 1337);
@@ -113,13 +123,13 @@ public class Controller implements Initializable {
             confirmation.showAndWait();
         }
     }
-
-
-
+    /**
+     * Initialise la classe avec les éléments de la liste déroulante
+     * @param url l'URL utilisée pour résoudre les chemins relatifs des fichiers FXML
+     * @param resourceBundle les ressources utilisées pour localiser les chaînes de caractères
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
             comboBox.setItems(FXCollections.observableArrayList("Automne", "Hiver", "Été"));
-
-
     }
 }

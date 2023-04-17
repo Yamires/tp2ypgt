@@ -72,18 +72,28 @@ public class Modele{
         }
     }
 
-
+    /**
+     * Classe utilitaire pour valider les adresses e-mail.
+     */
     public static class EmailValidator {
         private Pattern pattern;
         private Matcher matcher;
-
+        /**
+         * Le regex utilisé pour valider les adresses e-mail.
+         */
         private static final String EMAIL_PATTERN =
                 "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
+        /**
+         * Initialise la classe avec le motif regex pour valider les adresses e-mail.
+         */
         public EmailValidator() {
             pattern = Pattern.compile(EMAIL_PATTERN);
         }
-
+        /**
+         * Valide si une adresse e-mail est valide en utilisant le motif regex spécifié.
+         * @param email l'adresse e-mail à valider
+         * @return true si l'adresse e-mail est valide, false sinon
+         */
         public boolean validate(final String email) {
             matcher = pattern.matcher(email);
             return matcher.matches();

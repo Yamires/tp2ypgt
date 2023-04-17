@@ -9,3 +9,5 @@ Hiver	IFT1025	123456	Yamir	Poldo	alej.poldo@gmail.com
 Hiver	IFT1025	123456	Yamir	Poldo	alej.poldo@gmail.com
 Automne	IFT1015	123456	Yamir	Poldo	alej.poldo@gmail.com
 Automne	IFT1015	123456	yamir	alej	alej.poldo@gmail.com
+Hiver	IFT2125	123456	yami	alej	alej.podlo@gmail.com
+Automne	IFT1015	123456	Yamir	Poldo 	Alej.poldo@gmail.com
